@@ -141,6 +141,9 @@ public class Proj extends JFrame {
         else if (msg.equals("Student information update")) {
             new UpStu();
         }
+        else if (msg.equals("Teacher information update")) {
+            new UpTchr();
+        }
 
     }
     public static void main (String[] args){
