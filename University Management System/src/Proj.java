@@ -50,6 +50,7 @@ public class Proj extends JFrame {
         mb.add(newup);
 
         JMenuItem fu=new JMenuItem("Faculty information update");
+        fu.addActionListener(this::actionPerformed);
         fu.setBackground(Color.WHITE);
         newup.add(fu);
 
@@ -58,17 +59,19 @@ public class Proj extends JFrame {
         stu.addActionListener(this::actionPerformed);
         newup.add(stu);
 
-//        JMenu newExm = new JMenu("Examination");
-//        newExm.setForeground(Color.blue);
-//        mb.add(newExm);
-//
-//        JMenuItem exRs = new JMenuItem("Examination Result");
-//        exRs.setBackground(Color.WHITE);
-//        newExm.add(exRs);
-//
-//        JMenuItem exmrks = new JMenuItem("Examination Marks");
-//        exmrks.setBackground(Color.WHITE);
-//        newExm.add(exmrks);
+        JMenu newExm = new JMenu("Examination");
+        newExm.setForeground(Color.blue);
+        mb.add(newExm);
+
+        JMenuItem exRs = new JMenuItem("Examination Result");
+        exRs.setBackground(Color.WHITE);
+        exRs.addActionListener(this::actionPerformed);
+        newExm.add(exRs);
+
+        JMenuItem exmrks = new JMenuItem("Examination Marks");
+        exmrks.setBackground(Color.WHITE);
+        exmrks.addActionListener(this::actionPerformed);
+        newExm.add(exmrks);
 //
 //        JMenu newFee= new JMenu("Fee");
 //        newFee.setForeground(Color.MAGENTA);
@@ -141,8 +144,17 @@ public class Proj extends JFrame {
         else if (msg.equals("Student information update")) {
             new UpStu();
         }
+        else if (msg.equals("Faculty information update")) {
+            new UpTchr();
+        }
         else if (msg.equals("Teacher information update")) {
             new UpTchr();
+        }
+        else if (msg.equals("Examination Marks")) {
+            new EnterMarks();
+        }
+        else if (msg.equals("Examination Result")) {
+            new ExamDetails();
         }
 
     }
