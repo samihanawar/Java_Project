@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Citizen List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef3f7;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #01414c;
+            color: white;
+            text-align: center;
+            padding: 12px;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: auto;
+            padding: 0 20px;
+        }
+        .header-img {
+            width: 80px;
+            height: auto;
+        }
+        .container {
+            margin: 30px auto;
+            width: 85%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #01414c;
+            color: white;
+            padding: 10px;
+        }
+        td {
+            padding: 8px;
+            text-align: center;
+        }
+        .logout-bar {
+            text-align: right;
+            padding: 10px 20px;
+            background-color: #fff;
+        }
+        .logout-link {
+            background-color: #e63946;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .logout-link:hover {
+            background-color: #c91f2e;
+        }
+        .home {
+            background-color: #1c4a53;
+            color: white;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .home:hover {
+            background-color: #127d9a;
+        }
+
+         footer {
+            background-color: #01414c;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 15px 0;
+            width:100%;
+            bottom: 0;
+            margin-top: auto;
+
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <h1>Citizen List</h1>
+        <img th:src="@{/images/logo.jpg}" alt="Logo" class="header-img">
+    </div>
+</header>
+
+<div class="logout-bar">
+    <a th:href="@{/login}" class="logout-link">Logout</a>
+</div>
+
+<div class="container">
+    <h2>Registered Citizens</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Citizen ID</th>
+            <th>Name</th>
+            <th>Email</th>
+<!--            <th>Phone</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="citizen : ${citizens}">
+            <td th:text="${citizen.id}"></td>
+            <td th:text="${citizen.name}"></td>
+            <td th:text="${citizen.email}"></td>
+<!--            <td th:text="${citizen.phone}"></td>-->
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    &copy; 2025 Crime Reporting System | Admin Dashboard
+</footer>
+
+</body>
+</html>

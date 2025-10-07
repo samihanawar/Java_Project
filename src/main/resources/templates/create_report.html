@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d5e1e8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #01414c;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: #01414c;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #01414c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #036876;
+        }
+
+        .logout-bar {
+            background-color: rgba(255, 255, 255, 0.9);
+            text-align: right;
+            padding: 8px 20px;
+        }
+
+        .logout-link {
+            background-color: #e63946;
+            color: white;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-link:hover {
+            background-color: #c91f2e;
+        }
+
+        .home {
+            background-color: #1c4a53;
+            color: white;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .home:hover {
+            background-color: #127d9a;
+        }
+
+        footer {
+            background-color: #01414c;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: auto;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Crime Reporting System</h1>
+</header>
+
+<div class="logout-bar">
+    <a th:href="@{/login}" class="logout-link">Logout</a>
+    <a th:href="@{/}" class="home">Home</a>
+</div>
+
+<div class="container">
+    <h2>Create New Report</h2>
+    <form th:action="@{/report/save}" method="post" th:object="${report}">
+        <label for="title">Report Title</label>
+        <input type="text" id="title" th:field="*{title}" required>
+
+        <label for="category">Category</label>
+        <select id="category" th:field="*{category}" required>
+            <option value="">-- Select --</option>
+            <option value="Theft">Theft</option>
+            <option value="Fraud">Fraud</option>
+            <option value="Assault">Assault</option>
+            <option value="Violation">Law Violation</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="description">Description</label>
+        <textarea id="description" th:field="*{description}" rows="5" required></textarea>
+
+        <label for="location">Location</label>
+        <input type="text" id="location" th:field="*{location}" required>
+
+        <button type="submit">Submit Report</button>
+    </form>
+
+</div>
+
+<footer> &copy; 2025 Samiha. All rights reserved. </footer>
+</body>
+</html>

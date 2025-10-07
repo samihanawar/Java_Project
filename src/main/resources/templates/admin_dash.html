@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ADMIN_DASHBOARD</title>
+    <style>
+        body {
+            /* background-image:url('home_bg.jpg') ; */
+            display: flex;
+            flex-direction: column;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            /* font-family: Arial, sans-serif; */
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            /* color: white; */
+            background-color: #d5e1e8;
+        }
+
+        header {
+            background-color: #01414c;
+            color: rgb(255, 255, 255);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .header-img {
+            width: 100px;
+            height: auto;
+        }
+
+        h1 {
+            font-family: 'Times New Roman';
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .logout-bar {
+    background-color: #d5e1e8;
+    text-align: right;
+    padding: 8px 20px;
+}
+
+.logout-link {
+    background-color: #e63946;
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.logout-link:hover {
+    background-color: #c91f2e;
+}
+
+    .home {
+            background-color: #1c4a53;
+            color: white;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .home:hover {
+            background-color: #127d9a;
+        }
+
+.sidebar {
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 30px 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.sidebar h2 {
+    margin-bottom: 15px;
+    color: #01414c;
+}
+
+.sidebar label {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #01414c;
+}
+
+.sidebar select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #f0f8ff;
+    cursor: pointer;
+}
+
+.content-area {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url('/images/admin_B.jpg'); /* Thymeleaf can also be used */
+    background-size: cover;    /* make it fill */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+        footer {
+            background-color: #01414c;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 15px 0;
+            width:100%;
+            bottom: 0;
+            margin-top: auto;
+
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <h1>CRIME REPORTING SYSTEM</h1>
+        <img th:src="@{/images/logo.jpg}" alt="Logo" class="header-img">
+    </div>
+</header>
+
+<div class="logout-bar">
+    <a th:href="@{/login}" class="logout-link">Logout</a>
+    <a th:href="@{/}" class="home">Home</a>
+</div>
+
+<div class="main-layout">
+    <aside class="sidebar">
+        <h2>Welcome, Admin</h2>
+        <label for="admin-options">Choose an Action</label>
+        <select id="admin-options" onchange="navigateOption(this.value)">
+
+            <option value="/admin/citizens">View Citizen List</option>
+            <option value="/admin/polili">View Police List</option>
+            <option value="/report/all">View Reports</option>
+            <option value="/chcid">Update Reports</option>
+        </select>
+    </aside>
+
+    <section class="content-area">
+        <div style="text-align: center;">
+<!--            <img src="your-image-path.jpg" alt="Dashboard Preview" style="max-width: 300px; marginbottom: 20px;">-->
+            <img th:src="@{/images/admin_B.jpg}" alt="bgpic" class="header-img ">
+        </div>
+    </section>
+</div>
+
+<script>
+    function navigateOption(value) {
+        if (value) {
+            window.location.href = value;
+        }
+    }
+</script>
+
+<script>
+    function navigateOption(value) {
+        if (value) {
+            window.location.href = value;
+        }
+    }
+</script>
+
+<br>
+
+<footer> &copy; 2025 Samiha. All rights reserved. </footer>
+
+
+</body>
+</html>

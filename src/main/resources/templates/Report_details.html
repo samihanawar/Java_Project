@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Report Details</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f8;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #01414c;
+        color: white;
+        text-align: center;
+        padding: 15px;
+    }
+    .content {
+        max-width: 800px;
+        margin: 30px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h2 {
+        color: #01414c;
+        text-align: center;
+    }
+    p {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+    .label {
+        font-weight: bold;
+        color: #01414c;
+    }
+    .back-btn {
+        display: inline-block;
+        background-color: #1c4a53;
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 6px;
+        margin-top: 20px;
+    }
+    .back-btn:hover {
+        background-color: #127d9a;
+    }
+    footer {
+        background-color: #01414c;
+        color: white;
+        text-align: center;
+        padding: 15px 0;
+        margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Crime Reporting System</h1>
+</header>
+
+<div class="content">
+  <h2 th:text="${report.title}">Report Title</h2>
+
+  <p><span class="label">Category:</span> <span th:text="${report.category}"></span></p>
+  <p><span class="label">Description:</span> <span th:text="${report.description}"></span></p>
+  <p><span class="label">Location:</span> <span th:text="${report.location}"></span></p>
+  <p><span class="label">Report Date:</span>
+    <span th:text="${#temporals.format(report.reportDate, 'dd-MM-yyyy HH:mm')}"></span></p>
+  <p><span class="label">Citizen:</span> <span th:text="${report.user != null ? report.user.name : 'Unknown'}"></span></p>
+
+  <!-- If you add a case status field later -->
+  <p><span class="label">Status:</span> <span th:text="${report.status != null ? report.status : 'Pending'}"></span></p>
+
+<!--  <a th:href="@{/reports}" class="back-btn">← Back to Reports</a>-->
+</div>
+
+<footer>&copy; 2025 Samiha. All rights reserved.</footer>
+
+</body>
+</html>
